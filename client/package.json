@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "clean": "mkdir -p dist && rm -f dist/*",
+    "build:js": "esbuild src/main.ts --bundle --outfile=dist/main.js",
+    "build:css": "cp src/*.css dist/",
+    "build:html": "cp src/*.html dist/",
+    "build": "npm run build:js && npm run build:css && npm run build:html",
+    "all": "npm run clean && npm run build"
+  }
+}

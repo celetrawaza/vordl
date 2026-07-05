@@ -1,0 +1,91 @@
+body {
+    /* font-size: large; */
+    font-family: sans-serif;
+}
+
+.content {
+    display: flex;
+    /* grid-template-columns: 1fr 50% 1fr; */
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    /* gap: 10px; */
+    font-size: 2em;
+}
+
+.left, .right {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.mid {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.right {
+    text-align: right;
+}
+
+.grid-table {
+    /* display: grid; */
+    /* Переменная --columns обновляется через JavaScript */
+    /* grid-auto-flow: row; */
+    /* grid-template-columns: repeat(var(--columns, 10), 1fr); */
+    /* border-left: 1px solid #ccc; */
+    /* border-top: 1px solid #ccc; */
+    /* max-width: 100%; */
+    display: flex;
+    flex-direction: column; /* Строки идут сверху вниз */
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 100%;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row; /* Ячейки идут слева направо */
+}
+
+/* Ячейки таблицы */
+.grid-cell {
+    flex: 1; /* Все ячейки делят ширину строки поровну */
+    /* padding: 1em; */
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    justify-content: center;
+    /* border-right: 1px solid #ccc; */
+    /* border-bottom: 1px solid #ccc; */
+    border: 1px solid black;
+    background-color: rgb(175, 175, 175);
+    box-sizing: border-box;
+    aspect-ratio: 1;
+
+    color: lightgray;
+    -webkit-text-stroke: 2px black;
+    font-weight: bold;
+}
+
+.correct, .present, .wrong {
+}
+
+.wrong {
+    background-color: rgb(65, 65, 65);
+}
+
+.present {
+    background-color: rgb(181, 181, 22);
+}
+
+.correct {
+    background-color: rgb(11, 155, 11);
+}
+
+/* Стили для строки заголовков */
+/* .grid-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: left;
+} */

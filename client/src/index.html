@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Вордл</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <script src="main.js"></script>
+        <div class="header">
+            <h1>Вордл</h1>
+        </div>
+        <div class="content">
+            <!-- left side -->
+            <div class="left">
+                <p>Слово №<span id="wordNumber"></span></p>
+                <p>Время до нового: <span id="resetTime"></span></p>
+                <details id="wordDetails" hidden>
+                    <summary>Текущее слово</summary>
+                    <p><span id="word"></span></p>
+                </details>
+            </div>
+            <!-- mid -->
+            <div class="mid">
+                <div class="guesses">
+                    <div id="tablePrototypes" hidden>
+                        <div role="row" class="grid-row"></div>
+                        <div role="cell" class="grid-cell"></div>
+                    </div>
+                    <div id="tableGuesses" role="table" class="grid-table">
+                    </div>
+                </div>
+                <div class="input">
+                    <form>
+                        <fieldset id="formFields">
+                            <input id="inputText" type="text" placeholder="Слово..."/>
+                            <input id="inputButton" type="submit">
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="keyboard">
+                    <div id="tableKeyboard" role="table" class="grid-table">
+                    </div>
+                </div>
+            </div>
+            <!-- right side -->
+            <div class="right">
+            </div>
+        </div>
+        <div class="footer">
+            <h1>awa</h1>
+        </div>
+    </body>
+</html>
