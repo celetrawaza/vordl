@@ -93,11 +93,11 @@ func resetGame() {
 	// get letters
 	Game.Letters = readLetters("letters.txt")
 	// // parse words
-	if _, err := os.Stat("data.txt"); err != nil {
-		prepareFile("russian.txt", "data.txt", Game.Letters)
+	if _, err := os.Stat("words.txt"); err != nil {
+		prepareFile("words_raw.txt", "words.txt", Game.Letters)
 	}
 	// pick word
-	Game.word = pickRandomLine("data.txt")
+	Game.word = pickRandomLine("words.txt")
 	// Game.word = "емъёт"
 	_, Game.word = normalizeWord(Game.word, Game.Letters)
 	// todo timer
