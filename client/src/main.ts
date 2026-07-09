@@ -193,10 +193,6 @@ function initTimers() {
     setter();
 }
 
-function setWordNumber() {
-    E.wordNumber().innerHTML = ""+Game.params.wordNumber;
-}
-
 function hasWon() {
     return Game.tries.some(ga =>
         !ga.some(la =>
@@ -209,13 +205,19 @@ function hasFailed() {
     return Game.tries.length >= Game.params.maxTries;
 }
 
+function updateParams() {
+    initTimers();
+    E.wordNumber().innerHTML = ""+Game.params.wordNumber;
+    E.wordLength().innerHTML = ""+Game.params.length;
+    E.maxTries().innerHTML = ""+Game.params.maxTries;
+}
+
 async function main() {
     // add handlers
     E.inputButton().addEventListener("click", submitGuess)
     // get params of the game
     await getParams(); // todo consider expanding here
-    initTimers();
-    setWordNumber();
+    updateParams();
     // set up the interface
     populateGuessPrototype();
     generateKeyboard();

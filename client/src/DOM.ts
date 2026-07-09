@@ -16,6 +16,8 @@ export const E = {
     wordDetails: ()=>gID("wordDetails"),
     word: ()=>gID("word"),
     formFields: ()=>gID("formFields"),
+    wordLength: ()=>gID("wordLength"),
+    maxTries: ()=>gID("maxTries"),
 }
 
 export const C = {

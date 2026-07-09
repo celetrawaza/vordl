@@ -8,13 +8,15 @@
     <body>
         <script src="main.js"></script>
         <div class="header">
-            <h1>Вордл</h1>
+            <h1 class="title">Вордл</h1>
         </div>
         <div class="content">
             <!-- left side -->
             <div class="left">
                 <p>Слово №<span id="wordNumber"></span></p>
-                <p>Время до нового: <span id="resetTime"></span></p>
+                <p>Время до нового:<br><span id="resetTime"></span></p>
+                <p>Длина слова: <span id="wordLength"></span> букв</p>
+                <p>Число попыток: <span id="maxTries"></span></p>
                 <details id="wordDetails" hidden>
                     <summary>Текущее слово</summary>
                     <p><span id="word"></span></p>
@@ -32,9 +34,9 @@
                 </div>
                 <div class="input">
                     <form>
-                        <fieldset id="formFields">
+                        <fieldset id="formFields" class="inputFields">
                             <input id="inputText" type="text" placeholder="Слово..."/>
-                            <input id="inputButton" type="submit">
+                            <input id="inputButton" type="submit" value="Отправить">
                         </fieldset>
                     </form>
                 </div>
@@ -45,10 +47,21 @@
             </div>
             <!-- right side -->
             <div class="right">
+                <details id="ruleDetails">
+                    <summary>Как играть?</summary>
+                    <div class="textWall">
+                        Угадайте слово за ограниченное число попыток.
+                        В каждом опробованном слове буквы помечаются цветом:
+                        <ul>
+                            <li><span class="grid-cell correct">a</span> - буква правильная и на верном месте;</li>
+                            <li><span class="grid-cell present">a</span> - буква есть, но не на том месте;</li>
+                            <li><span class="grid-cell wrong">a</span> - буквы нет в искомом слове.</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
         </div>
         <div class="footer">
-            <h1>awa</h1>
         </div>
     </body>
 </html>
