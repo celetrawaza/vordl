@@ -1,29 +1,35 @@
 
-.PHONY: all build rebuild clean prepare client server data run
-
-all: rebuild run
+.PHONY: autorun rebuild build clean prepare client server data collect run
 
 rebuild: clean build
 
-build: prepare client server data
+autorun: rebuild run
+
+build: prepare client server data collect
 
 clean:
 	rm -rf out
 
 prepare:
-	mkdir out/
-	mkdir out/static/
+	mkdir -p out/
 
 client:
 	cd client && npm run all
-	cp client/dist/* out/static/
 
 server:
-	cd server && go build
-	cp server/vordl out/
+	cd server && go build -o vordl .
 
-data:
-	cp data/* out/
+data: ;
+
+collect:
+	# client
+	mkdir -p out/static
+	cp -r client/dist/* out/static/
+	# server
+	cp server/vordl out/
+	# data
+	mkdir -p out/data/
+	cp data/* out/data/
 
 run:
 	cd out/ && ./vordl

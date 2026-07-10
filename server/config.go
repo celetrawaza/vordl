@@ -6,9 +6,12 @@ import (
 )
 
 type ConfigStruct struct {
-	Port            int
-	ResetInterval   time.Duration
-	StartWordNumber int
+	Port             int
+	ResetInterval    time.Duration
+	StartWordNumber  int
+	LettersFilename  string
+	WordsFilename    string
+	WordsRawFilename string
 }
 
 var Config ConfigStruct
@@ -18,8 +21,11 @@ func LoadConfig() ConfigStruct {
 	wordNumber := flag.Int("wordNumber", 1, "Start word number")
 	flag.Parse()
 	return ConfigStruct{
-		Port:            *port,
-		ResetInterval:   time.Hour,
-		StartWordNumber: *wordNumber,
+		Port:             *port,
+		ResetInterval:    time.Hour,
+		StartWordNumber:  *wordNumber,
+		LettersFilename:  "data/letters.txt",
+		WordsFilename:    "data/words.txt",
+		WordsRawFilename: "data/words_raw.txt",
 	}
 }

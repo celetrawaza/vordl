@@ -85,13 +85,13 @@ func getWord(w http.ResponseWriter, r *http.Request) {
 func resetGame() {
 	Game = makeParams()
 	// get letters
-	Game.Letters = readLetters("letters.txt")
+	Game.Letters = readLetters(Config.LettersFilename)
 	// // parse words
-	if _, err := os.Stat("words.txt"); err != nil {
-		prepareFile("words_raw.txt", "words.txt", Game.Letters)
+	if _, err := os.Stat(Config.WordsFilename); err != nil {
+		prepareFile(Config.WordsRawFilename, Config.WordsFilename, Game.Letters)
 	}
 	// pick word
-	Game.word = pickRandomLine("words.txt")
+	Game.word = pickRandomLine(Config.WordsFilename)
 	_, Game.word = normalizeWord(Game.word, Game.Letters)
 }
 
