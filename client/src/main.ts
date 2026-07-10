@@ -14,7 +14,7 @@ interface GameInterface {
 let Game: GameInterface;
 
 function halt() {
-    alert("Error happened!")
+    alert("Fatal error happened!")
 }
 
 async function getParams() {
@@ -75,8 +75,6 @@ function updateGuessTable() {
 
 async function submitGuess(event: Event) {
     event.preventDefault();
-    // const b = E.inputButton() as HTMLInputElement;
-    // b.disabled = true;
     const fields = E.formFields() as HTMLFieldSetElement;
     fields.disabled = true;
     const guess = (E.inputText() as HTMLInputElement).value;
@@ -89,7 +87,6 @@ async function submitGuess(event: Event) {
         console.error("Error submitting guess", e);
         alert("Ошибка!\n"+e);
     }
-    // b.disabled = false;
     fields.disabled = false;
 }
 

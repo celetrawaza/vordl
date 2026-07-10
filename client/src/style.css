@@ -1,5 +1,4 @@
 body {
-    /* font-size: large; */
     font-family: sans-serif;
 }
 
@@ -43,20 +42,9 @@ body {
     flex-basis: auto;
 }
 
-/* .right {
-    text-align: right;
-} */
-
 .grid-table {
-    /* display: grid; */
-    /* Переменная --columns обновляется через JavaScript */
-    /* grid-auto-flow: row; */
-    /* grid-template-columns: repeat(var(--columns, 10), 1fr); */
-    /* border-left: 1px solid #ccc; */
-    /* border-top: 1px solid #ccc; */
-    /* max-width: 100%; */
     display: flex;
-    flex-direction: column; /* Строки идут сверху вниз */
+    flex-direction: column;
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     width: 100%;
@@ -64,12 +52,11 @@ body {
 
 .grid-row {
     display: flex;
-    flex-direction: row; /* Ячейки идут слева направо */
+    flex-direction: row;
 }
 
-/* Ячейки таблицы */
 .grid-cell {
-    flex: 1; /* Все ячейки делят ширину строки поровну */
+    flex: 1;
     text-align: center;
     justify-content: center;
     border: 1px solid black;
@@ -84,15 +71,8 @@ body {
     display: inline-block;
 }
 
-.grid-row .grid-cell {
-    /* padding: 1em; */
-}
-
 .keyboard .grid-cell {
     cursor: pointer;
-}
-
-.correct, .present, .wrong {
 }
 
 .wrong {
@@ -115,10 +95,3 @@ summary {
     text-align: justify;
     padding: 0 1em;
 }
-
-/* Стили для строки заголовков */
-/* .grid-header {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    text-align: left;
-} */

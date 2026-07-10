@@ -35,13 +35,7 @@ func hasGuessed(player Player) bool {
 
 func makeGuess(w http.ResponseWriter, r *http.Request) {
 	player := retrievePlayer(r)
-	// if slices.ContainsFunc(Game.guesses[player], func(g Guess) bool {
-	// 	return !slices.ContainsFunc(g.ToGuessAnnotated(), func(la LetterAnnotated) bool {
-	// 		return la.Correct != GuessCorrect
-	// 	})
-	// })
 	if hasGuessed(player) {
-		// if already got correct guess
 		http.Error(w, "Already guessed current word", http.StatusConflict)
 		return
 	}
@@ -98,10 +92,7 @@ func resetGame() {
 	}
 	// pick word
 	Game.word = pickRandomLine("words.txt")
-	// Game.word = "емъёт"
 	_, Game.word = normalizeWord(Game.word, Game.Letters)
-	// todo timer
-	// time.Timer
 }
 
 func main() {

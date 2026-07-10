@@ -22,10 +22,6 @@ export const E = {
 
 export const C = {
     tablePrototypeCellClone: (content?: string) => {
-        // const out = cE("td");
-        // // out.classList.add("cell")
-        // out.innerText = content ?? "";
-        // return out;
         const out = E.tablePrototypeCell().cloneNode(true);
         (out as HTMLElement).innerHTML = content ?? "";
         return out;

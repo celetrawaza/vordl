@@ -17,7 +17,6 @@ func LoadConfig() ConfigStruct {
 	port := flag.Int("port", 8080, "Port to serve the app")
 	wordNumber := flag.Int("wordNumber", 1, "Start word number")
 	flag.Parse()
-	// fmt.Println("wordNumber:", *wordNumber)
 	return ConfigStruct{
 		Port:            *port,
 		ResetInterval:   time.Hour,

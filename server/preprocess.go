@@ -21,7 +21,6 @@ func pickRandomLine(input string) string {
 
 	for i := 1; scanner.Scan(); i++ {
 		pick := rng.Intn(i)
-		// fmt.Println(pick)
 		if pick == 0 {
 			result = scanner.Text()
 		}
@@ -37,7 +36,6 @@ func prepareFile(input string, output string, allowed Alphabet) {
 	}
 	defer inputFile.Close()
 
-	// outputFile, err := os.Open(output)
 	outputFile, err := os.OpenFile(output, os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)

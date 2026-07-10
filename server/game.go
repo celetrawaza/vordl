@@ -34,7 +34,7 @@ type LetterAnnotated struct {
 	Letter  Letter      `json:"letter"`
 	Correct GuessStatus `json:"correctness"`
 }
-type GuessAnnotated []LetterAnnotated // `json:"guess"`
+type GuessAnnotated []LetterAnnotated
 
 type Player string
 
@@ -87,29 +87,15 @@ func generatePlayer() (Player, error) {
 	return out, nil
 }
 
-// func (id Identity) MarshalJSON() ([]byte, error) {
-// 	// Convert the rune to its string representation and marshal that
-// 	out := make([]string, len(id))
-// 	for k, v := range id {
-// 		out[k] = string(v)
-// 	}
-// 	return json.Marshal(out)
-// }
-
 func (l Letter) MarshalJSON() ([]byte, error) {
 	return json.Marshal(string(l))
 }
-
-// func (rt ResetTime) MarshalJSON() ([]byte, error) {
-// 	return json.Marshal(int64(rt))
-// }
 
 func normalizeWord(input string, allowed Alphabet) (ok bool, normalized string) {
 	var sb strings.Builder
 	letters := []Letter(input)
 inputLoop:
 	for _, r := range letters {
-		// if strings.ContainsRune(allowed, r) {continue}
 		for _, id := range allowed {
 			for _, l := range id {
 				if r != l {

@@ -1,4 +1,3 @@
-import { PhonyParams, PhonyTries } from "./Tests";
 import { Guess, GuessAnnotated, Params } from "./Types";
 
 interface APIError {
@@ -10,7 +9,6 @@ async function extractError(response: Response) {
     return text || `HTTP error ${response.status}`;
 }
 
-//*
 export const API = {
     params: async () => fetch("/api/params").then(r=>r.json()),
     tries: async (): Promise<GuessAnnotated[]> => fetch("/api/tries").then(r=>r.json()),
@@ -32,10 +30,3 @@ export const API = {
         return response.json();
     }
 };
-/*/
-export const API = {
-    params: async (): Promise<Params> => (PhonyParams),
-    tries: async (): Promise<GuessAnnotated[]> => (PhonyTries),
-    guess: async (guess: Guess): Promise<GuessAnnotated[]> => (API.tries()),
-};
-// */
