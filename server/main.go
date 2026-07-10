@@ -106,23 +106,26 @@ func resetGame() {
 
 func main() {
 	Config = LoadConfig()
+	InitGameScheduler()
 	go func() {
 		now := time.Now()
 		targetTime := now.Truncate(Config.ResetInterval).Add(Config.ResetInterval)
-		// init
-		resetGame()
-		Game.ResetTime = ResetTime(targetTime.Unix())
+		GameScheduler <- func() {
+			// init
+			resetGame()
+			Game.ResetTime = ResetTime(targetTime.Unix())
+		}
 		// first reset
 		delay := time.Until(targetTime)
 		timer := time.NewTimer(delay)
 		defer timer.Stop()
 		<-timer.C
-		resetGame()
+		GameScheduler <- resetGame
 		// next resets
 		ticker := time.NewTicker(Config.ResetInterval)
 		defer ticker.Stop()
 		for range ticker.C {
-			resetGame()
+			GameScheduler <- resetGame
 		}
 	}()
 	// serve and enjoy

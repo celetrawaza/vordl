@@ -44,6 +44,17 @@ type Guess []Letter
 type Identity []Letter
 type Alphabet []Identity
 
+var GameScheduler chan func()
+
+func InitGameScheduler() {
+	GameScheduler = make(chan func())
+	go func() {
+		for job := range GameScheduler {
+			job()
+		}
+	}()
+}
+
 func makeParams() GameParams {
 	now := time.Now().UTC()
 	prevWordNumber := Game.WordNumber

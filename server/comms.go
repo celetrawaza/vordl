@@ -5,6 +5,17 @@ import (
 	"net/http"
 )
 
+func schedulizeFunc(f http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		done := make(chan struct{})
+		GameScheduler <- func() {
+			f(w, r)
+			close(done)
+		}
+		<-done
+	}
+}
+
 func NewRouter() http.Handler {
 	mux := http.NewServeMux()
 
@@ -12,11 +23,10 @@ func NewRouter() http.Handler {
 	mux.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello!"))
 	})
-	mux.HandleFunc("GET /api/tries", getGuesses)
-	// http.HandleFunc("GET /api/letters", getLetters)
-	mux.HandleFunc("GET /api/params", getParams)
-	mux.HandleFunc("POST /api/guess", makeGuess)
-	mux.HandleFunc("GET /api/word", getWord)
+	mux.HandleFunc("GET /api/tries", schedulizeFunc(getGuesses))
+	mux.HandleFunc("GET /api/params", schedulizeFunc(getParams))
+	mux.HandleFunc("POST /api/guess", schedulizeFunc(makeGuess))
+	mux.HandleFunc("GET /api/word", schedulizeFunc(getWord))
 
 	return mux
 }
